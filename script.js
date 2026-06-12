@@ -4,13 +4,13 @@ const siteData = {
             label: "Instagram",
             handle: "@Shirokinstudio",
             url: "https://www.instagram.com/shirokinstudio/",
-            count: 407
+            count: 413
         },
         youtubeDev: {
             label: "YouTube Dev",
             handle: "@Shirokinstudio",
             url: "https://www.youtube.com/@ShiroKinStudio",
-            count: 60
+            count: 63
         },
         youtubeLol: {
             label: "LoL Rehber",
@@ -22,7 +22,7 @@ const siteData = {
             label: "TikTok",
             handle: "@Shirokinstudio",
             url: "https://www.tiktok.com/@shirokinstudio",
-            count: 14
+            count: 16
         }
     },
     games: {
