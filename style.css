@@ -602,93 +602,152 @@ a {
     border: 1px solid rgba(201,161,92,0.25);
     flex-shrink: 0;
 }
-/* GAMES DETAIL - FIXED */
+/* GAMES DETAIL */
+
+#games {
+    padding: 24px;
+}
 
 .games-layout {
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 14px;
+    gap: 16px;
     align-items: stretch;
 }
 
-.game-featured,
-.game-small {
-    position: relative;
-    display: block;
+.game-card {
+    min-width: 0;
     overflow: hidden;
-    border-radius: 18px;
-    border: 1px solid var(--border);
-    transition: 0.2s ease;
-    min-height: 300px;
+    display: flex;
+    flex-direction: column;
+    border-radius: 20px;
+    border: 1px solid rgba(255,255,255,0.11);
+    background: linear-gradient(180deg, rgba(22,22,24,0.98), rgba(12,12,14,0.98));
+    box-shadow: 0 16px 34px rgba(0,0,0,0.22);
+    transition: transform 0.22s ease, border-color 0.22s ease, box-shadow 0.22s ease;
 }
 
-.game-featured:hover,
-.game-small:hover {
-    transform: translateY(-2px);
-    border-color: rgba(201,161,92,0.35);
+.game-card:hover {
+    transform: translateY(-4px);
+    border-color: rgba(255,255,255,0.22);
+    box-shadow: 0 22px 44px rgba(0,0,0,0.32);
 }
 
-.game-guild {
-    background-image: linear-gradient(to top, rgba(0,0,0,0.74), rgba(0,0,0,0.16)), url("assets/guildmaster-bg.png");
-    background-size: cover;
-    background-position: center;
+.game-art {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 19 / 10;
+    overflow: hidden;
+    background: #0b0b0c;
+    border-bottom: 1px solid rgba(255,255,255,0.09);
 }
 
-.game-area81 {
-    background-image: linear-gradient(to top, rgba(0,0,0,0.74), rgba(0,0,0,0.16)), url("assets/area81-bg.png");
-    background-size: cover;
-    background-position: center;
-}
-
-.game-biome {
-    background-image:
-        linear-gradient(to top, rgba(15,36,31,0.82), rgba(15,36,31,0.04) 68%),
-        url("assets/biomebites-bg.png");
-    background-size: cover;
-    background-position: center;
-}
-
-.game-overlay {
+.game-art::after {
+    content: "";
     position: absolute;
     inset: 0;
-    background: radial-gradient(circle at 20% 20%, rgba(255,255,255,0.10), transparent 28%), linear-gradient(to top, rgba(0,0,0,0.62), rgba(0,0,0,0.10));
+    pointer-events: none;
+    box-shadow: inset 0 0 0 1px rgba(255,255,255,0.035);
+}
+
+.game-art img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    transition: transform 0.35s ease;
+}
+
+.game-card:hover .game-art img {
+    transform: scale(1.025);
+}
+
+.game-biome .game-art img {
+    object-position: center center;
 }
 
 .game-content {
-    position: relative;
-    z-index: 1;
-    height: 100%;
-    padding: 18px;
+    height: auto;
+    min-height: 168px;
+    padding: 18px 18px 20px;
     display: flex;
+    flex: 1;
     flex-direction: column;
-    justify-content: flex-end;
+    justify-content: flex-start;
+    background: linear-gradient(180deg, rgba(20,20,22,0.98), rgba(12,12,14,0.98));
+}
+
+.game-meta {
+    min-height: 34px;
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+}
+
+.game-label,
+.game-category {
+    display: inline-flex;
+    width: fit-content;
+    align-items: center;
+    min-height: 28px;
+    padding: 0 10px;
+    border-radius: 999px;
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 0.7px;
+    text-transform: uppercase;
 }
 
 .game-label {
-    display: inline-block;
-    width: fit-content;
-    margin-bottom: 10px;
-    padding: 7px 11px;
-    border-radius: 999px;
-    background: rgba(255,255,255,0.12);
+    margin: 0;
+    color: #e7c27c;
+    background: rgba(201,161,92,0.11);
+    border: 1px solid rgba(201,161,92,0.24);
+}
+
+.game-category {
+    color: #b8bbc2;
+    background: rgba(255,255,255,0.045);
+    border: 1px solid rgba(255,255,255,0.09);
+}
+
+.game-open-arrow {
+    width: 32px;
+    height: 32px;
+    flex: 0 0 32px;
+    display: grid;
+    place-items: center;
+    border-radius: 50%;
+    color: #d7d7d9;
+    background: rgba(255,255,255,0.05);
     border: 1px solid rgba(255,255,255,0.10);
-    font-size: 11px;
+    font-size: 15px;
     font-weight: 800;
-    color: #f0f0f0;
+    transition: transform 0.2s ease, background 0.2s ease;
+}
+
+.game-card:hover .game-open-arrow {
+    transform: translate(2px, -2px);
+    background: rgba(255,255,255,0.09);
 }
 
 .game-content h3 {
-    font-family: "League Spartan", sans-serif;
-    font-size: 34px;
-    font-weight: 800;
     margin-bottom: 8px;
+    font-family: "League Spartan", sans-serif;
+    font-size: clamp(25px, 2.2vw, 31px);
+    font-weight: 800;
+    line-height: 1.04;
+    letter-spacing: -0.4px;
 }
 
 .game-content p {
-    max-width: 520px;
-    color: #d0d0d0;
-    font-size: 14px;
-    line-height: 1.55;
+    max-width: none;
+    color: #aeb0b5;
+    font-size: 13px;
+    line-height: 1.6;
 }
 
 /* CONTACT */
@@ -736,18 +795,30 @@ a {
     }
 
     .games-layout {
-        grid-template-columns: 1fr;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
     }
 
-    .game-featured,
-    .game-small {
-        min-height: 240px;
+    .game-card {
+        min-height: 0;
     }
 }
 
 @media (max-width: 760px) {
-    .top-game-grid {
+    .top-game-grid,
+    .games-layout {
         grid-template-columns: 1fr;
+    }
+
+    #games {
+        padding: 18px;
+    }
+
+    .game-art {
+        aspect-ratio: 16 / 9;
+    }
+
+    .game-content {
+        min-height: 0;
     }
 }
 
