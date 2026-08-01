@@ -330,6 +330,11 @@ a {
     color: #ffd78a;
 }
 
+.biome-card .top-game-visual img {
+    max-width: 88%;
+    max-height: 82%;
+}
+
 .top-game-visual img + .top-game-fallback {
     display: none;
 }
@@ -623,7 +628,7 @@ a {
     border-color: rgba(201,161,92,0.35);
 }
 
-.game-featured {
+.game-guild {
     background-image: linear-gradient(to top, rgba(0,0,0,0.74), rgba(0,0,0,0.16)), url("assets/guildmaster-bg.png");
     background-size: cover;
     background-position: center;
@@ -637,11 +642,8 @@ a {
 
 .game-biome {
     background-image:
-        linear-gradient(to top, rgba(15,36,31,0.88), rgba(18,55,45,0.08)),
-        radial-gradient(circle at 23% 24%, rgba(255,228,153,0.90) 0 8%, transparent 9%),
-        radial-gradient(circle at 76% 22%, rgba(240,137,77,0.78) 0 10%, transparent 11%),
-        radial-gradient(circle at 66% 47%, rgba(116,190,119,0.82) 0 13%, transparent 14%),
-        linear-gradient(145deg, #f1c777 0%, #6aa57c 48%, #315f58 100%);
+        linear-gradient(to top, rgba(15,36,31,0.82), rgba(15,36,31,0.04) 68%),
+        url("assets/biomebites-bg.png");
     background-size: cover;
     background-position: center;
 }
