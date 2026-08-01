@@ -976,3 +976,55 @@ a {
     object-fit: contain !important;
     transform: scale(1.45);
 }
+
+/* MOBILE PERFORMANCE MODE */
+@media (max-width: 760px), (hover: none) and (pointer: coarse) {
+    .bg-glow {
+        display: none;
+    }
+
+    .hero-left,
+    .hero-right,
+    .section-block,
+    .contact-box {
+        -webkit-backdrop-filter: none;
+        backdrop-filter: none;
+        background: #101012;
+        box-shadow: 0 10px 24px rgba(0,0,0,0.24);
+    }
+
+    .games-showcase-panel {
+        background: #0e0e10;
+    }
+
+    .top-game-card,
+    .social-card,
+    .game-card,
+    .store-cta,
+    .details-jump,
+    .game-art img,
+    .game-open-arrow {
+        transition: none;
+    }
+
+    .top-game-card:hover,
+    .social-card:hover,
+    .game-card:hover,
+    .store-cta-blue:hover,
+    .details-jump:hover {
+        transform: none;
+    }
+
+    .game-card,
+    .game-card:hover {
+        box-shadow: 0 8px 18px rgba(0,0,0,0.22);
+    }
+
+    .game-card:hover .game-art img {
+        transform: none;
+    }
+
+    .top-game-visual img {
+        filter: none;
+    }
+}
