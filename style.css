@@ -16,12 +16,17 @@
 }
 
 html {
+    min-height: 100%;
     scroll-behavior: smooth;
+    background: #050505;
+    overscroll-behavior: none;
 }
 
 body {
     min-height: 100vh;
+    min-height: 100dvh;
     color: var(--text);
+    overscroll-behavior-y: none;
     font-family: "Inter", system-ui, sans-serif;
     overflow-x: hidden;
     background: radial-gradient(circle at 50% 12%, rgba(255,255,255,0.08) 0%, rgba(255,255,255,0.025) 18%, transparent 38%), radial-gradient(circle at 80% 20%, rgba(201,161,92,0.06) 0%, transparent 18%), linear-gradient(180deg, #040404 0%, #090909 100%);
