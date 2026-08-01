@@ -33,6 +33,10 @@ const siteData = {
         area81: {
             url: "https://play.google.com/store/apps/details?id=com.shirokinstudio.area81",
             buttonText: "Play Store'a Git"
+        },
+        biomeBites: {
+            url: "https://play.google.com/store/apps/details?id=com.shirokinstudio.biomebites",
+            buttonText: "Play Store'a Git"
         }
     },
 
@@ -82,8 +86,10 @@ function applySocialData() {
 function applyGameLinks() {
     const guildButton = document.querySelector("[data-game-link='guildMaster']");
     const areaButton = document.querySelector("[data-game-link='area81']");
+    const biomeButton = document.querySelector("[data-game-link='biomeBites']");
     const guildDetailCard = document.querySelector("[data-game-detail='guildMaster']");
     const areaDetailCard = document.querySelector("[data-game-detail='area81']");
+    const biomeDetailCard = document.querySelector("[data-game-detail='biomeBites']");
 
     if (guildButton) {
         const guildUrl = siteData.games.guildMaster.url;
@@ -109,6 +115,12 @@ function applyGameLinks() {
         areaButton.querySelector("span").textContent = siteData.games.area81.buttonText;
     }
 
+    if (biomeButton) {
+        biomeButton.href = siteData.games.biomeBites.url;
+        biomeButton.target = "_blank";
+        biomeButton.querySelector("span").textContent = siteData.games.biomeBites.buttonText;
+    }
+
     if (guildDetailCard) {
         const guildUrl = siteData.games.guildMaster.url;
         guildDetailCard.href = guildUrl || "javascript:void(0)";
@@ -118,6 +130,11 @@ function applyGameLinks() {
     if (areaDetailCard) {
         areaDetailCard.href = siteData.games.area81.url;
         areaDetailCard.target = "_blank";
+    }
+
+    if (biomeDetailCard) {
+        biomeDetailCard.href = siteData.games.biomeBites.url;
+        biomeDetailCard.target = "_blank";
     }
 }
 
