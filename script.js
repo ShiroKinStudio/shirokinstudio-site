@@ -16,7 +16,7 @@ const siteData = {
             label: "LoL Rehber",
             handle: "@ShiroxKin",
             url: "https://www.youtube.com/@ShiroxKin",
-            count: 2670
+            count: 3000
         },
         tiktok: {
             label: "TikTok",
