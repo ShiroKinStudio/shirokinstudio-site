@@ -22,7 +22,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=League+Spartan:wght@600;700;800;900&display=swap" rel="stylesheet">
   <link rel="preload" as="image" href="assets/optimized/area81-cover-960.webp" imagesrcset="assets/optimized/area81-cover-480.webp 480w, assets/optimized/area81-cover-960.webp 960w" imagesizes="(max-width: 760px) 100vw, 800px" fetchpriority="high">
-  <link rel="stylesheet" href="style.css?v=20261115-1">
+  <link rel="stylesheet" href="style.css?v=20261115-2">
 </head>
 <body>
   <a class="skip-link" href="#games">Oyunlara geç</a>
@@ -44,10 +44,11 @@
           <span class="eyebrow"><span class="eyebrow-dot" aria-hidden="true"></span> BAĞIMSIZ OYUN STÜDYOSU</span>
           <h1 id="studio-heading" class="brand-title"><span>SHIRO<span class="gold">KIN</span></span><small>STUDIO</small></h1>
           <p class="hero-lead">Küçük bir stüdyo.<br><strong>Büyük dünyalar.</strong></p>
-          <p class="hero-description">Savunma, strateji ve macera. ShiroKin Studio'nun mobil oyunlarını keşfet.</p>
-          <div class="hero-chips" aria-label="Oyunlarımız">
-            <span><i aria-hidden="true"></i> 2 oyun yayında</span>
-            <span>Unity ile geliştirildi</span>
+          <div class="hero-status" aria-label="İki oyun yayında, bir oyun geliştiriliyor">
+            <span class="status-indicator" aria-hidden="true"></span>
+            <strong>2 oyun yayında</strong>
+            <span class="status-separator" aria-hidden="true"></span>
+            <span>1 oyun geliştiriliyor</span>
           </div>
         </div>
 
@@ -116,15 +117,28 @@
 
       <section class="connect" aria-labelledby="connect-title">
         <div class="connect-heading">
-          <span class="section-eyebrow">SHIROKIN STUDIO</span>
+          <span class="section-eyebrow">SHIROKIN TOPLULUĞU</span>
           <h2 id="connect-title">Gelişmeleri takip et.</h2>
-          <p>Yeni oyunlar, güncellemeler ve geliştirme sürecinden paylaşımlar.</p>
+          <span class="connect-subline">Oyunlarımızın perde arkası, güncellemeler ve yeni projeler.</span>
         </div>
-        <div class="social-links" aria-label="Sosyal medya bağlantıları">
-          <a href="https://www.youtube.com/@ShiroKinStudio" target="_blank" rel="noopener noreferrer" aria-label="ShiroKin Studio YouTube"><span class="social-mark social-yt" aria-hidden="true">▶</span>YouTube</a>
-          <a href="https://www.instagram.com/shirokinstudio/" target="_blank" rel="noopener noreferrer" aria-label="ShiroKin Studio Instagram"><span class="social-mark social-ig" aria-hidden="true">◎</span>Instagram</a>
-          <a href="https://www.tiktok.com/@shirokinstudio" target="_blank" rel="noopener noreferrer" aria-label="ShiroKin Studio TikTok"><span class="social-mark social-tk" aria-hidden="true">♪</span>TikTok</a>
-          <a href="https://www.youtube.com/@ShiroxKin" target="_blank" rel="noopener noreferrer" aria-label="ShiroxKin LoL YouTube"><span class="social-mark social-yt" aria-hidden="true">▶</span>LoL Rehber</a>
+        <!-- Sayılar canlı API verisi değildir; son bilinen referanslardır. -->
+        <div class="social-links" aria-label="Sosyal medya hesapları ve son bilinen takipçi sayıları">
+          <a class="social-card" href="https://www.instagram.com/shirokinstudio/" target="_blank" rel="noopener noreferrer" aria-label="Instagram, ShiroKinStudio, son bilinen 424 takipçi">
+            <span class="social-card-top"><span class="social-mark social-ig" aria-hidden="true">◎</span><span class="social-copy"><b>Instagram</b><small>@shirokinstudio</small></span></span>
+            <span class="social-card-bottom"><span class="social-counter"><b>424</b><small>takipçi</small></span><span class="social-arrow" aria-hidden="true">↗</span></span>
+          </a>
+          <a class="social-card" href="https://www.youtube.com/@ShiroKinStudio" target="_blank" rel="noopener noreferrer" aria-label="YouTube Dev, ShiroKinStudio, son bilinen 72 abone">
+            <span class="social-card-top"><span class="social-mark social-yt" aria-hidden="true">▶</span><span class="social-copy"><b>YouTube Dev</b><small>@ShiroKinStudio</small></span></span>
+            <span class="social-card-bottom"><span class="social-counter"><b>72</b><small>abone</small></span><span class="social-arrow" aria-hidden="true">↗</span></span>
+          </a>
+          <a class="social-card" href="https://www.youtube.com/@ShiroxKin" target="_blank" rel="noopener noreferrer" aria-label="LoL Rehber, ShiroxKin, 3 binden fazla abone">
+            <span class="social-card-top"><span class="social-mark social-lol" aria-hidden="true"><img src="assets/social/youtube-lol.png" alt="" width="32" height="32" loading="lazy" decoding="async"></span><span class="social-copy"><b>LoL Rehber</b><small>@ShiroxKin</small></span></span>
+            <span class="social-card-bottom"><span class="social-counter"><b>3K+</b><small>abone</small></span><span class="social-arrow" aria-hidden="true">↗</span></span>
+          </a>
+          <a class="social-card" href="https://www.tiktok.com/@shirokinstudio" target="_blank" rel="noopener noreferrer" aria-label="TikTok, ShiroKinStudio, son bilinen 22 takipçi">
+            <span class="social-card-top"><span class="social-mark social-tk" aria-hidden="true">♪</span><span class="social-copy"><b>TikTok</b><small>@shirokinstudio</small></span></span>
+            <span class="social-card-bottom"><span class="social-counter"><b>22</b><small>takipçi</small></span><span class="social-arrow" aria-hidden="true">↗</span></span>
+          </a>
         </div>
       </section>
     </main>
@@ -134,6 +148,6 @@
       <a href="mailto:Shirokinstudio@gmail.com">İletişim <span aria-hidden="true">↗</span></a>
     </footer>
   </div>
-  <script src="script.js?v=20261115-1" defer></script>
+  <script src="script.js?v=20261115-2" defer></script>
 </body>
 </html>
