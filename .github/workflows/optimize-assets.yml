@@ -1,0 +1,55 @@
+name: Optimize and validate game showcase
+on:
+  workflow_dispatch:
+  push:
+    branches: [main, feature/game-showcase-v2]
+    paths:
+      - 'index.html'
+      - 'style.css'
+      - 'script.js'
+      - 'scripts/**'
+      - 'assets/*-bg.png'
+      - 'assets/area81-logo.png'
+      - '.github/workflows/optimize-assets.yml'
+permissions:
+  contents: write
+jobs:
+  optimize:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install 'Pillow>=11,<13'
+      - run: python scripts/optimize_images.py
+      - name: Commit optimized assets (only generated WebP files)
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add assets/optimized/
+          if ! git diff --cached --quiet; then
+            git commit -m "Optimize site game artwork for mobile"
+            git push
+          fi
+  visual-tests:
+    needs: optimize
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.ref_name }}
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install playwright
+      - run: python -m playwright install --with-deps chromium
+      - run: python scripts/test_site.py
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: shirokin-v2-responsive-screenshots
+          path: test-screenshots/
+          retention-days: 14
