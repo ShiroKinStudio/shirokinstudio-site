@@ -2,7 +2,7 @@ name: Optimize showcase images
 on:
   workflow_dispatch:
   push:
-    branches: [feature/game-showcase-v2]
+    branches: [main, feature/game-showcase-v2]
     paths:
       - 'scripts/optimize_images.py'
       - 'assets/*-bg.png'
