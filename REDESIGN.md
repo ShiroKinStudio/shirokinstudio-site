@@ -17,3 +17,6 @@ Conversion-first single-page redesign. Retains the black/gold wordmark and Leagu
 
 ## Important
 `assets/optimized/*.webp` are generated files and must exist before the HTML is deployed to `main`. `area81-bg.png` etc. are the original art and can be kept in repo for future editing; WebP is used in visible image surfaces. This site uses static HTML/CSS and works on GitHub Pages.
+
+## Automated screenshot test
+Run `python scripts/test_site.py` after `pip install playwright` and `playwright install chromium`; GitHub Actions runs this automatically for 320, 375, 390, 768, 1366 and 1920px and saves screenshots as artifacts.
