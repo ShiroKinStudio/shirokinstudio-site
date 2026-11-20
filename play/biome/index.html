@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#08090c">
+  <meta name="description" content="Biome Bites'ın ilk üç bölümünü indirmeden tarayıcında oyna. ShiroKin Studio web demosu.">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="ShiroKin Studio">
+  <meta property="og:title" content="Biome Bites — Web Demo | ShiroKin Studio">
+  <meta property="og:description" content="Üç bölüm, rengârenk bulmacalar. Biome Bites'ı tarayıcıda dene!">
+  <meta property="og:image" content="https://www.shirokinstudio.com/assets/biomebites-bg.png">
+  <meta property="og:url" content="https://www.shirokinstudio.com/play/biome/">
+  <meta name="color-scheme" content="dark">
+  <title>Biome Bites — Web Demo | ShiroKin Studio</title>
+  <link rel="icon" href="../../assets/favicon.png" type="image/png">
+  <link rel="apple-touch-icon" href="../../assets/favicon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=League+Spartan:wght@600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    :root{color-scheme:dark;--bg:#08090c;--panel:#15161c;--line:rgba(255,255,255,.12);--muted:#aeb2bd;--gold:#d1ac70;--violet:#ccb7f6;--pink:#f5a2c6;--white:#fff;}
+    *,*::before,*::after{box-sizing:border-box}
+    html{min-width:320px;background:var(--bg);scroll-behavior:smooth}
+    body{margin:0;min-height:100vh;color:var(--white);font:400 14px/1.5 Inter,system-ui,-apple-system,Segoe UI,sans-serif;background:radial-gradient(ellipse at 72% 19%,rgba(125,80,171,.15),transparent 45%),radial-gradient(ellipse at 19% 10%,rgba(209,172,112,.08),transparent 44%),var(--bg);-webkit-font-smoothing:antialiased}
+    button,a{-webkit-tap-highlight-color:transparent}
+    a{color:inherit;text-decoration:none}
+    a:focus-visible,button:focus-visible{outline:3px solid #e7caff;outline-offset:4px}
+    button{font:inherit;cursor:pointer}
+    .shell{width:min(1160px,calc(100% - 48px));margin:auto}
+    .top{min-height:80px;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;gap:20px}
+    .brand{display:flex;flex-direction:column;gap:2px;font-family:'League Spartan',Inter,sans-serif;font-weight:900;line-height:.85;letter-spacing:.1px}
+    .brand-name{font-size:25px}.brand-name span{color:var(--gold)}.brand-sub{font-size:11px;letter-spacing:2.8px;margin-top:4px}
+    .back{font-weight:750;font-size:12px;color:#e3dfdb;display:inline-flex;align-items:center;gap:9px;border:1px solid var(--line);padding:10px 13px;border-radius:10px;background:rgba(255,255,255,.035)}
+    .back:hover{border-color:rgba(209,172,112,.65)}
+    main{display:grid;grid-template-columns:minmax(0,1fr) minmax(320px,440px);gap:clamp(28px,6vw,85px);padding:clamp(34px,6vw,72px) 0 58px;align-items:center}
+    .kicker{display:inline-flex;align-items:center;gap:8px;color:#e7ca8b;font-size:11px;font-weight:800;letter-spacing:1.6px;text-transform:uppercase}
+    .dot{width:7px;height:7px;background:#79dfaf;border-radius:50%;box-shadow:0 0 0 4px rgba(121,223,175,.11)}
+    h1{font:900 clamp(54px,7.4vw,105px)/.86 'League Spartan',Inter,sans-serif;letter-spacing:-2.8px;margin:27px 0 18px;max-width:580px}
+    h1 span{display:block;background:linear-gradient(115deg,#f8e6c8 0%,#e8c5ed 45%,#b2a1ee 100%);-webkit-background-clip:text;background-clip:text;color:transparent}
+    .pitch{font-size:clamp(16px,1.7vw,20px);font-weight:650;color:#e9e7ee;line-height:1.45;max-width:460px;margin:0 0 16px}
+    .desc{color:var(--muted);font-size:13px;max-width:470px;line-height:1.85;margin:0 0 25px}
+    .specs{display:flex;align-items:center;flex-wrap:wrap;gap:8px;margin:0 0 24px}
+    .specs span{background:#1b1b22;border:1px solid var(--line);border-radius:99px;padding:7px 12px;font-weight:750;font-size:11px;color:#e8e4eb}
+    .actions{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+    .primary{display:inline-flex;justify-content:center;align-items:center;gap:12px;padding:15px 23px;min-height:54px;background:linear-gradient(135deg,#eec4ff,#b6a1ed 65%,#9785de);border:1px solid #f8dcff;color:#251a3a;border-radius:13px;font-weight:900;font-size:14px;box-shadow:inset 0 1px 0 rgba(255,255,255,.55),0 5px 0 #5b4586,0 14px 30px rgba(135,101,222,.22);transition:transform .15s,filter .15s}
+    .primary:hover{filter:brightness(1.06);transform:translateY(-2px)}.primary:active{transform:translateY(2px)}
+    .secondary{min-height:52px;padding:13px 17px;display:inline-flex;align-items:center;justify-content:center;gap:10px;background:rgba(255,255,255,.045);border:1px solid rgba(255,255,255,.16);border-radius:12px;color:#eee;font-weight:750;font-size:12px}
+    .secondary:hover{border-color:rgba(255,255,255,.4)}
+    .small-note{margin:21px 0 0;color:#9698a5;max-width:460px;font-size:11px;line-height:1.7}
+    .preview-wrap{position:relative;min-width:0;max-width:460px;margin:0 auto;width:100%}
+    .flare{pointer-events:none;position:absolute;inset:8% -9%;z-index:0;background:radial-gradient(ellipse,rgba(190,147,238,.22),transparent 65%);filter:blur(20px)}
+    .frame{position:relative;z-index:1;border:1px solid rgba(255,255,255,.25);background:linear-gradient(155deg,#333040,#14141b);border-radius:33px;padding:10px;box-shadow:0 28px 70px rgba(0,0,0,.55),0 0 0 1px rgba(0,0,0,.6);max-width:408px;margin:auto}
+    .screen{position:relative;aspect-ratio:9/16;max-height:75vh;overflow:hidden;border-radius:25px;background:#191321;isolation:isolate}
+    .art{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:saturate(1.08)}
+    .screen::before{position:absolute;z-index:1;content:"";inset:0;background:linear-gradient(180deg,rgba(25,16,37,.25),rgba(25,16,37,.1) 35%,rgba(13,10,20,.9) 100%)}
+    .splash{position:absolute;z-index:3;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;text-align:center;padding:20px 20px 42px}
+    .splash strong{font:900 clamp(32px,4vw,48px)/.93 'League Spartan',Inter,sans-serif;text-shadow:0 4px 25px #201828;letter-spacing:-1px}
+    .splash p{font-weight:700;color:#f3e8f7;font-size:12px;margin:13px 0 18px;max-width:230px}
+    .splash .primary{width:100%;min-height:48px;padding:12px 18px;font-size:13px}
+    .spark{font-size:28px;margin-bottom:12px;filter:drop-shadow(0 5px 6px rgba(0,0,0,.3))}
+    #gameHost{position:absolute;inset:0;z-index:5;display:none;background:#090909}
+    #gameHost iframe{display:block;width:100%;height:100%;border:0;background:#090909}
+    #gameHost.active{display:block}
+    .frame-note{display:flex;align-items:center;justify-content:space-between;gap:12px;color:#b2aebe;font-weight:700;font-size:11px;padding:14px 8px 1px}
+    .frame-note a{color:#e5d1ff;text-decoration:underline;text-underline-offset:3px}
+    .tip{border-top:1px solid var(--line);display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;padding:21px 0 27px}
+    .tip div{display:flex;flex-direction:column;gap:5px}.tip b{font-size:12px;color:#dedbe5}.tip span{font-size:11px;line-height:1.7;color:#9195a2}
+    footer{border-top:1px solid var(--line);padding:20px 0 28px;color:#858895;font-size:10px;font-weight:700;letter-spacing:.7px;display:flex;justify-content:space-between;gap:15px}
+    footer a{color:#dac49b}
+    .message{margin-top:14px;color:#f0b5b5;font-size:12px;min-height:18px;max-width:450px}
+    .mobile-hint{display:none}
+    @media(max-width:900px){main{grid-template-columns:minmax(0,1fr) 340px;gap:20px}h1{font-size:60px}}
+    @media(max-width:720px){.shell{width:min(100% - 32px,520px)}.top{min-height:65px}.brand-name{font-size:21px}.brand-sub{font-size:9px}.back{font-size:11px;padding:8px 10px}main{display:flex;flex-direction:column;align-items:stretch;padding:27px 0 32px;gap:26px}h1{font-size:clamp(56px,12vw,74px);margin:19px 0 12px}.pitch{font-size:17px}.desc{font-size:12px;line-height:1.7;margin-bottom:19px}.specs{margin-bottom:19px}.actions .primary{flex:1}.actions .secondary{font-size:11px}.small-note{margin-top:16px}.preview-wrap{max-width:360px}.screen{max-height:none}.frame{max-width:320px;border-radius:28px}.screen{border-radius:21px}.tip{grid-template-columns:1fr;gap:14px}.tip div{flex-direction:row;align-items:baseline;gap:12px}.tip b{flex:0 0 112px}.mobile-hint{display:inline}.frame-note{justify-content:center}footer{font-size:9px}}
+    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{transition:none!important}}
+  </style>
+</head>
+<body>
+  <div class="shell">
+    <header class="top">
+      <a class="brand" href="../../" aria-label="ShiroKin Studio ana sayfa">
+        <span class="brand-name">SHIRO<span>KIN</span></span><span class="brand-sub">STUDIO</span>
+      </a>
+      <a class="back" href="../../">← Tüm oyunlar</a>
+    </header>
+    <main>
+      <section class="intro" aria-labelledby="title">
+        <span class="kicker"><span class="dot"></span> SHIROKIN WEB PLAYABLE · DEMO V1</span>
+        <h1 id="title">BIOME <span>BITES.</span></h1>
+        <p class="pitch">Üç bölüm. Bir sürü renkli bulmaca. 🍬</p>
+        <p class="desc">Biome Bites'ın ilk üç bölümünü telefonuna uygulama kurmadan dene. Eşleştir, görevleri tamamla, yeni bölümlerin kilidini aç!</p>
+        <div class="specs" aria-label="Demo özellikleri"><span>✦ 3 oynanabilir bölüm</span><span>◉ Dokunmatik</span><span>☁ Tarayıcıdan oyna</span></div>
+        <div class="actions">
+          <a id="play" class="primary" href="./game/index.html" aria-label="Biome Bites web demosunu başlat">▶ &nbsp; DEMOYU OYNA</a>
+          <button id="share" class="secondary" type="button">↗ &nbsp; Paylaş</button>
+        </div>
+        <p class="message" id="message" role="status" aria-live="polite"></p>
+        <p class="small-note">Uygulama kurulumu gerekmez. Oyun açılırken yaklaşık 26,6 MB veri tarayıcı üzerinden yüklenebilir. Gerçek yükleme süresi bağlantına ve cihazına bağlıdır.</p>
+      </section>
+      <aside class="preview-wrap" aria-label="Oyun ön izlemesi">
+        <div class="flare"></div>
+        <div class="frame">
+          <div class="screen">
+            <img class="art" src="../../assets/optimized/biomebites-cover-800.webp" onerror="this.onerror=null;this.src='../../assets/biomebites-bg.png'" alt="Biome Bites renkli bulmaca dünyası">
+            <div class="splash" id="splash"><div class="spark" aria-hidden="true">⭐ 🍬 ✨</div><strong>MINI DEMO</strong><p>İlk üç bölüm seni bekliyor.</p><a class="primary" href="./game/index.html" id="screenPlay">▶ &nbsp; OYNA</a></div>
+            <div id="gameHost" aria-label="Biome Bites oyun alanı"></div>
+          </div>
+          <div class="frame-note"><span>İlk 3 bölüm · Ücretsiz web demo</span><a href="./game/index.html">Tam sayfada aç ↗</a></div>
+        </div>
+      </aside>
+    </main>
+    <section class="tip" aria-label="Oynama bilgileri">
+      <div><b>01 / Başlat</b><span>Oyna düğmesine bas. Oyun yalnızca isteğinle yüklenir.</span></div>
+      <div><b>02 / Eşleştir</b><span>Mobilde parmağınla, bilgisayarda fareyle eşleştirme yap.</span></div>
+      <div><b>03 / Devam et</b><span>3. bölümün sonunda tam sürüm için mağaza bağlantısını kullan.</span></div>
+    </section>
+    <footer><span>© 2026 SHIROKIN STUDIO · BIOME BITES WEB DEMO</span><a href="../../">Ana sayfa ↗</a></footer>
+  </div>
+  <script>
+    'use strict';
+    const gameUrl = new URL('./game/index.html', document.baseURI).href;
+    const primary = document.getElementById('play');
+    const screenPlay = document.getElementById('screenPlay');
+    const message = document.getElementById('message');
+    const host = document.getElementById('gameHost');
+    const useDirectPage = window.matchMedia('(max-width: 720px)').matches || /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+    async function begin(event){
+      if(useDirectPage) return; // iOS/Android: Unity sayfasını doğrudan aç, iframe WebGL bellek maliyeti olmasın.
+      event.preventDefault();
+      message.textContent='Oyun dosyaları kontrol ediliyor…';
+      try{
+        const response=await fetch(gameUrl,{method:'HEAD',cache:'no-store'});
+        if(!response.ok) throw new Error('Game not deployed');
+        if (!host.classList.contains('active')) {
+          const iframe=document.createElement('iframe');
+          iframe.title='Biome Bites Web Demo';
+          iframe.allow='autoplay; fullscreen; gamepad';
+          iframe.allowFullscreen=true;
+          iframe.src=gameUrl;
+          host.appendChild(iframe);
+          host.classList.add('active');
+          document.getElementById('splash').hidden=true;
+        }
+        message.textContent='Oyun sağdaki ekranda açılıyor. İstersen “Tam sayfada aç” bağlantısını kullan.';
+        host.scrollIntoView({behavior:'smooth',block:'center'});
+      }catch(err){
+        message.textContent='Oyun dosyaları henüz bu adrese yüklenmemiş veya sunucudan erişilemiyor. ZIP içindeki kurulum adımlarını kontrol et.';
+      }
+    }
+    primary.addEventListener('click',begin);
+    screenPlay.addEventListener('click',begin);
+    document.getElementById('share').addEventListener('click',async()=>{
+      const url=location.href;
+      try{
+        if(navigator.share) await navigator.share({title:'Biome Bites — Web Demo',url});
+        else if(navigator.clipboard?.writeText){await navigator.clipboard.writeText(url);message.textContent='Demo bağlantısı kopyalandı!';}
+        else {message.textContent='Sayfanın bağlantısını adres çubuğundan kopyalayabilirsin.';}
+      }catch(err){if(err.name!=='AbortError')message.textContent='Paylaşılamadı; bağlantıyı adres çubuğundan kopyalayabilirsin.';}
+    });
+  </script>
+</body>
+</html>
