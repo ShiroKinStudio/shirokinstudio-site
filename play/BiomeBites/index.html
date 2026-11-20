@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="tr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta name="theme-color" content="#2d0f4a">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="description" content="Biome Bites web demo — ilk 3 bölümü tarayıcında oyna.">
+    <title>Biome Bites — Web Demo</title>
+    <link rel="stylesheet" href="TemplateData/style.css">
+  </head>
+  <body>
+    <div id="stage">
+      <div id="frame">
+        <canvas id="unity-canvas" tabindex="-1"></canvas>
+
+        <div id="cover">
+          <div class="brand">
+            <div class="badge">WEB DEMO</div>
+            <h1>BİOME BİTES</h1>
+            <p class="tagline">Hayvanları doyur, biyomları keşfet!</p>
+          </div>
+          <div class="progress"><div id="progress-fill"></div></div>
+          <p id="status">Yükleniyor… %0</p>
+        </div>
+
+        <div id="error" hidden>
+          <div class="card">
+            <h2>Demo açılamadı</h2>
+            <p id="error-text">Beklenmeyen bir hata oluştu.</p>
+            <button id="retry" type="button">TEKRAR DENE</button>
+          </div>
+        </div>
+
+        <div id="rotate" aria-hidden="true">
+          <div class="card"><p>En iyi deneyim için telefonunu dik tut.</p></div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      (function () {
+        var canvas = document.getElementById("unity-canvas");
+        var cover = document.getElementById("cover");
+        var fill = document.getElementById("progress-fill");
+        var statusText = document.getElementById("status");
+        var errorBox = document.getElementById("error");
+        var errorText = document.getElementById("error-text");
+        var mobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent) ||
+          (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1);
+        if (mobile) document.body.classList.add("mobile");
+
+        function showError(message) {
+          cover.hidden = true;
+          errorText.textContent = message;
+          errorBox.hidden = false;
+        }
+
+        document.getElementById("retry").addEventListener("click", function () { window.location.reload(); });
+
+        // Called by the game (ShiroKinWebDemo.jslib) once the first scene is interactive.
+        window.shirokinOnContentReady = function () { cover.classList.add("done"); setTimeout(function () { cover.hidden = true; }, 400); };
+
+        var gl = document.createElement("canvas").getContext("webgl2");
+        if (!gl) {
+          showError("Tarayıcın WebGL 2 desteklemiyor. Güncel Chrome, Safari veya Edge ile tekrar dene.");
+          return;
+        }
+
+        // Block page scroll / pinch-zoom / double-tap zoom so touches reach the game (iOS Safari).
+        ["touchmove", "gesturestart", "gesturechange"].forEach(function (name) {
+          document.addEventListener(name, function (e) { if (e.target === canvas || name !== "touchmove") e.preventDefault(); }, { passive: false });
+        });
+        var lastTouchEnd = 0;
+        document.addEventListener("touchend", function (e) {
+          var now = Date.now();
+          if (now - lastTouchEnd <= 300 && e.target === canvas) e.preventDefault();
+          lastTouchEnd = now;
+        }, { passive: false });
+
+        var buildUrl = "Build";
+        var config = {
+          arguments: [],
+          dataUrl: buildUrl + "/e735fb665ceaefdcf72f7fe8931c8635.data.unityweb",
+          frameworkUrl: buildUrl + "/ad61c47c2369d83082beef7784b56b93.framework.js.unityweb",
+          codeUrl: buildUrl + "/738d8fb47419c63134d3fc0ad8f2e8e8.wasm.unityweb",
+          streamingAssetsUrl: "StreamingAssets",
+          companyName: "ShiroKinStudio",
+          productName: "Biome Bites Match 3",
+          productVersion: "2.4",
+          // Demo progress lives in Application.persistentDataPath (IndexedDB); persist every write.
+          autoSyncPersistentDataPath: true,
+          // Cap the render resolution on 3x phones: big memory/fill-rate win, no visible loss for 2D.
+          devicePixelRatio: Math.min(window.devicePixelRatio || 1, 2),
+          showBanner: function (message, type) {
+            if (type === "error") showError(message);
+            else console.warn(message);
+          }
+        };
+
+        var script = document.createElement("script");
+        script.src = buildUrl + "/212aed5b9e44af5133534dbeb3e6e25a.loader.js";
+        script.onerror = function () { showError("Oyun dosyaları indirilemedi. Bağlantını kontrol edip tekrar dene."); };
+        script.onload = function () {
+          createUnityInstance(canvas, config, function (progress) {
+            var percent = Math.round(progress * 100);
+            fill.style.width = percent + "%";
+            statusText.textContent = percent < 100 ? "Yükleniyor… %" + percent : "Hazırlanıyor…";
+          }).then(function (instance) {
+            window.biomeBitesInstance = instance;
+          }).catch(function (message) {
+            var text = String(message || "");
+            if (/memory|out of memory|allocate/i.test(text))
+              showError("Cihazın belleği yetersiz kaldı. Diğer sekmeleri kapatıp tekrar dene.");
+            else
+              showError("Demo başlatılamadı: " + text);
+          });
+        };
+        document.body.appendChild(script);
+      })();
+    </script>
+  </body>
+</html>
